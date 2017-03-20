@@ -14,6 +14,7 @@
       $uibModal.open({
         animation: true,
         templateUrl: page,
+        controller: designCtrl,
         size: size,
         resolve: {
           items: function () {
