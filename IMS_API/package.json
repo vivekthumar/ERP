@@ -1,0 +1,33 @@
+{
+  "name": "Base",
+  "version": "1.0.0",
+  "description": "Basic structure for Express web apps.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node_modules/.bin/mocha tests/**"
+  },
+  "keywords": [
+    "base",
+    "project",
+    "node",
+    "express",
+    "structure"
+  ],
+  "author": "Terlici Ltd.",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "bson": "^1.0.4",
+    "express": "^4.12.3",
+    "jade": "^1.9.2",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.25",
+    "node-uuid": "^1.4.7",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4",
+    "should": "^6.0.1"
+  }
+}

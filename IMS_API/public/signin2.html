@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from piluku.bootstrapguru.com/Build/signin2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Feb 2017 11:02:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<title>Piluku | signin2</title>
+	<!-- <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
+	<!-- Bootstrap CSS -->
+
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/material.css">
+	<link rel="stylesheet" href="assets/css/material.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">	
+	<link rel="stylesheet" type="text/css" href="assets/css/signin2.css">	
+	
+	<!-- custom scrollbar stylesheet -->	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+</head>
+<body>
+
+	<div ng-show="signInModal">
+		<div class="flip-container">
+			<div class="flipper">
+				<div class="front">
+					<!-- front content -->
+					<div class="holder">
+						<h1 class="heading">piluku</h1>				
+						<input class="form-control" type="text" ng-model="Uname" placeholder="Username">					
+						<input type="password" class="form-control" ng-model="password" placeholder="Password">					
+						<div class="bottom_info">
+							<a href="#" class="pull-right" data-toggle="modal" data-target="#forgot">forgot password?</a>
+							<a class="pull-left" ng-click="showSignUp()">Register new account</a>
+						</div>		
+						<div class="clearfix"></div>
+						<a class="btn btn-primary btn-block" ng-click="login(Uname, password)">Sign in</a>		
+					</div>
+				</div>			
+			</div>		
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="forgot" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel"><i class="ion-android-settings"></i> Reset password</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-sm-12">
+							<input type="text" class="form-control" placeholder="Enter Email here">
+							<h6 class="note"><i class="ion-android-mail"></i> password will be sent to your email</h6>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-red" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Send</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+	</div>
+
+	<div ng-show="signUpModal">
+		<div class="flip-container">
+			<div class="flipper">
+				<div class="front">
+					<!-- front content -->
+					<div class="holder">
+						<h1 class="heading">piluku</h1>				
+						<input class="form-control" type="text" placeholder="First name">					
+						<input class="form-control" type="text" placeholder="Last name">					
+						<input class="form-control" type="text" placeholder="Username">					
+						<input type="password" class="form-control" placeholder="Password">					
+						<input type="email" class="form-control" placeholder="Email">										
+						<div class="bottom_info">
+							<a href="#" class="pull-right" data-toggle="modal" data-target="#forgot">forgot password?</a>
+							<a class="pull-left" ng-click="showSignIn()">Already Got Account ?</a>
+						</div>		
+						<div class="clearfix"></div>
+						<a class="btn btn-primary btn-block">Sign up</a>					
+					</div>
+				</div>			
+			</div>
+			<div class="load_pulse"></div>
+		</div>
+
+		<!-- Modal -->
+		
+	</div>
+
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>	
+</body>
+
+<!-- Mirrored from piluku.bootstrapguru.com/Build/signin2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Feb 2017 11:02:25 GMT -->
+</html>
