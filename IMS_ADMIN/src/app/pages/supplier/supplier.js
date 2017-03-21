@@ -5,16 +5,16 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.design')
-      .controller('designCtrl', designCtrl);
+  angular.module('BlurAdmin.pages.supplier')
+      .controller('supplierCtrl', supplierCtrl);
 
   /** @ngInject */
-  function designCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http) {
+  function supplierCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http) {
     $scope.open = function (page, size) {
       $uibModal.open({
         animation: true,
         templateUrl: page,
-        controller: designCtrl,
+        controller: supplierCtrl,
         size: size,
         resolve: {
           items: function () {
@@ -25,8 +25,8 @@
     };
     $scope.openProgressDialog = baProgressModal.open;
     $scope.test = "this is test"
-     $scope.saveDesign = function(){
-      console.log("call save design...")
+     $scope.savesupplier = function(){
+      console.log("call save supplier...")
         // $http({
         //       method: "POST",
         //       url: "/customer/customerList"
@@ -37,7 +37,7 @@
       }
 
       function myFunction(){
-           console.log("call save design...")
+           console.log("call save supplier...")
       }
 
 

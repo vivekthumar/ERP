@@ -36,12 +36,16 @@ router.post('/deleteClient', function(req, res) {
 
 router.post('/getClientData', function(req, res) {
 	var data = req.body;
+    console.log("GET client client")
    client.getClientData(data).then(function (Rdata) {
+    console.log("Rdata  ::", Rdata)
         res.send(Rdata)
     }, function (error) {
         res.send(error)
     });
 
 });
+
+
 
 module.exports = router
