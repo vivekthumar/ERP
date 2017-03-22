@@ -19,12 +19,19 @@
   "dependencies": {
     "body-parser": "^1.12.3",
     "bson": "^1.0.4",
+    "compression": "^1.6.2",
+    "convict": "^3.0.0",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
     "express": "^4.12.3",
+    "helmet": "^3.5.0",
     "jade": "^1.9.2",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.25",
+    "morgan": "^1.8.1",
     "node-uuid": "^1.4.7",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "mocha": "^2.2.4",

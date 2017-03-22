@@ -2,7 +2,7 @@ var express = require('express')
     q = require('q'),
     router = express.Router(),
     client = require('../models/client');
-
+console.log("cTRL")
 router.post('/addClient', function(req, res) {
 	var data = req.body;
    client.addClient(data).then(function (Rdata) {
