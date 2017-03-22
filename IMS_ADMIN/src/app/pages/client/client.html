@@ -2,9 +2,82 @@
   <div class="row">
     <div class="col-md-12">
       <div ba-panel ba-panel-title="Smart Table With Filtering, Sorting And Pagination" ba-panel-class="with-scroll">
-        <div include-with-scope="app/pages/client/widgets/smartTable.html"></div>
+        <!-- <div include-with-scope="app/pages/client/widgets/smartTable.html"></div> -->
+        <div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/client/widgets/addModal.html', 'md')">
+      Add client
+    </button>
+  </div>
+</div></br>
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-bordered" st-table="clientData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="clientFname">Full Name</th>
+      <th st-sort="clientAddress">Address</th>
+      <th st-sort="clientCity">City</th>
+      <th st-sort="clientState">State</th>
+      <th st-sort="clientCountry">County</th>
+      <th st-sort="clientMobile">Mobile</th>
+      <th st-sort="clientEmail">Email</th>
+      <th st-sort="clientType">type</th>
+      <th>Action</th>
+    </tr>
+    <!-- <tr>
+      <th><input st-search="clientFname" placeholder="Search name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="clientAddress" placeholder="Search address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="clientCity" placeholder="Search city" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="clientState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="clientCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="clientMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="clientEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="clientType" placeholder="Search type" class="input-sm form-control search-input" type="search"/>
+      </th>
+    </tr> -->
+    </thead>
+    <tbody>
+    <tr ng-repeat="val in clientGridData">
+      <td>{{val.clientFname}}</td>
+      <td>{{val.clientAddress}}</td>
+      <td>{{val.clientCity}}</td>
+      <td>{{val.clientState}}</td>
+      <td>{{val.clientCountry}}</td>
+      <td>{{val.clientMobile}}</td>
+      <td>{{val.clientEmail}}</td>
+      <td>{{val.clientType}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editClient('app/pages/client/widgets/editModal.html', 'md', val._id,val.clientFname,val.clientAddress,val.clientCity,val.clientState,val.clientCountry,val.clientMobile,val.clientEmail,val.clientType)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteClient(val._id)" style="cursor: pointer;">Delete</span></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
       </div>
     </div>
   </div>
 
 </div>
+
+
+
+

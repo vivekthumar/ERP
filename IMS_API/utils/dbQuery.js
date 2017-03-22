@@ -8,6 +8,7 @@ var uuid = require('node-uuid');
 function insertIntoDB(Collection, option){
     var deffered = q.defer();
     console.log("TEST ::: ", Collection,  option)
+    option.timestamp = new Date();
     db.collection(Collection, {safe: true}, function(err, collection){
         if(err){
             console.log(err);
@@ -30,6 +31,7 @@ function insertIntoDB(Collection, option){
 var updateIntoDB = function(Collection, opt, setOpt){
     var deffered = q.defer();
     console.log("UPDATE  :: ", opt, setOpt)
+    setOpt.modifiedTime = new Date();
     db.collection(Collection, function(err, collection){
             if(err){
                     console.log(err);

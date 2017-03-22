@@ -1,13 +1,79 @@
 <div class="widgets">
-<button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/supplier/widgets/editModal.html', 'md')">
-      Add supplier1 {{test}}
-    </button>
   <div class="row">
     <div class="col-md-12">
       <div ba-panel ba-panel-title="Smart Table With Filtering, Sorting And Pagination" ba-panel-class="with-scroll">
-        <div include-with-scope="app/pages/supplier/widgets/smartTable.html"></div>
+        <!-- <div include-with-scope="app/pages/supplier/widgets/smartTable.html"></div> -->
+        <div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/supplier/widgets/addModal.html', 'md')">
+      Add supplier
+    </button>
+  </div>
+</div></br>
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-bordered" st-table="supplierData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="supplierFname">Full Name</th>
+      <th st-sort="supplierAddress">Address</th>
+      <th st-sort="supplierCity">City</th>
+      <th st-sort="supplierState">State</th>
+      <th st-sort="supplierCountry">County</th>
+      <th st-sort="supplierMobile">Mobile</th>
+      <th st-sort="supplierEmail">Email</th>
+      <th>Action</th>
+    </tr>
+    <!-- <tr>
+      <th><input st-search="supplierFname" placeholder="Search name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="supplierAddress" placeholder="Search address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="supplierCity" placeholder="Search city" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="supplierState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="supplierCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="supplierMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="supplierEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
+      </th>
+    </tr> -->
+    </thead>
+    <tbody>
+    <tr ng-repeat="val in supplierGridData">
+      <td>{{val.supplierFname}}</td>
+      <td>{{val.supplierAddress}}</td>
+      <td>{{val.supplierCity}}</td>
+      <td>{{val.supplierState}}</td>
+      <td>{{val.supplierCountry}}</td>
+      <td>{{val.supplierMobile}}</td>
+      <td>{{val.supplierEmail}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editsupplier('app/pages/supplier/widgets/editModal.html', 'md', val._id,val.supplierFname,val.supplierAddress,val.supplierCity,val.supplierState,val.supplierCountry,val.supplierMobile,val.supplierEmail)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deletesupplier(val._id)" style="cursor: pointer;">Delete</span></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
       </div>
     </div>
   </div>
 
 </div>
+
+
+
+

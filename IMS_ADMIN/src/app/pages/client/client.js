@@ -9,13 +9,17 @@
       .controller('clientCtrl', clientCtrl);
 
   /** @ngInject */
-  function clientCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http) {
+  function clientCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
+    
+    var modalFlag = false;
     $scope.open = function (page, size) {
-      $uibModal.open({
+      modalFlag = true;
+      $scope.modalInstance = $uibModal.open({
         animation: true,
         templateUrl: page,
-        controller: clientCtrl,
+        controller:clientCtrl,
         size: size,
+        scope: $scope,
         resolve: {
           items: function () {
             return $scope.items;
@@ -54,11 +58,24 @@
           }).success(function (res, status, headers) {
               console.log("res  :: ", res);
               $scope.getClientData();
-              $('#addClient').modal('hide');
+              $scope.modalInstance.close()
+              if(res == true){
+                  serv.toast.showSuccessToast('Client has been saved successfully..!');
+              }else{
+                serv.toast.showErrorToast('Client has not been saved..!');
+              }
+              
+
+
+              
+              
           });
       }
 
-      $scope.editClient = function(clientID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType){
+      $scope.editClient = function(page, size, clientID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType){
+        
+        modalFlag = true;
+
         $scope.clientFname = tdFname
         $scope.clientAddress = tdAdd
         $scope.clientCity = tdCity
@@ -68,6 +85,22 @@
         $scope.clientEmail = tdEmail
         $scope.clientType = tdType
         $scope.clientID = clientID
+
+        console.log("EDIT     : ", clientID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType)
+
+        $scope.modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: page,
+          size: size,
+          controller:clientCtrl,
+          scope: $scope,
+          resolve: {
+            items: function () {
+              return $scope.items;
+            }
+          }
+        });
+
       }
 
 
@@ -85,15 +118,26 @@
 
           console.log("dataObj  :: ", dataObj, $scope.clientID)
 
-          $http({
-              method: "POST",
-              url: $scope.baseURL+"client/updateClient",
-              data: {'clientID' : $scope.clientID, 'data': dataObj}
-          }).success(function (res, status, headers) {
-              console.log("res  :: ", res)
-              $scope.getClientData();
-              $('#editClient').modal('hide');
-          });
+          if($scope.clientID){
+            $http({
+                method: "POST",
+                url: $scope.baseURL+"client/updateClient",
+                data: {'clientID' : $scope.clientID, 'data': dataObj}
+            }).success(function (res, status, headers) {
+                console.log("res  :: ", res)
+                $scope.getClientData();
+                $scope.modalInstance.close()
+                if(res == true){
+                  serv.toast.showSuccessToast('Client has been updated successfully..!');
+                }else{
+                  serv.toast.showErrorToast('Client has not been updated..!');
+                }
+            });
+          }else{
+             alert("Client ID not found ....!")
+          }
+
+          
       }
 
       $scope.deleteClient = function(clientID){
@@ -104,20 +148,34 @@
           }).success(function (res, status, headers) {
               console.log("res  :: ", res)
               $scope.getClientData();
+              if(res == true){
+                serv.toast.showSuccessToast('Client has been deleted successfully..!');
+              }else{
+                serv.toast.showErrorToast('Client has not been deleted..!');
+              }
           });
       }
 
       $scope.getClientData = function(){
         console.log("URL : ", $scope.baseURL+"client/getClientData")
+        // $scope.clientGridData = [];
           $http({
               method: "POST",
               url:  $scope.baseURL+"client/getClientData"
           }).success(function (res, status, headers) {
-              console.log("res  :: ", res)
+              $scope.clientGridData = res;
               $scope.clientData = res;
+              console.log('$scope.clientGridData  ;; ', $scope.clientGridData)
+              if(res && res.length == 0){
+                serv.toast.showErrorToast('Client data not found..!');
+              }
+              // $scope.$apply();
           });
       }
-      $scope.getClientData();
+      console.log("modalFlag : ", modalFlag)
+      if(modalFlag == false){
+        $scope.getClientData();
+      }
 
 
     $scope.smartTablePageSize = 10;

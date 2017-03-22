@@ -1,13 +1,79 @@
 <div class="widgets">
-<button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/design/widgets/editModal.html', 'md')">
-      Add Design1 {{test}}
-    </button>
   <div class="row">
     <div class="col-md-12">
       <div ba-panel ba-panel-title="Smart Table With Filtering, Sorting And Pagination" ba-panel-class="with-scroll">
-        <div include-with-scope="app/pages/design/widgets/smartTable.html"></div>
+        <!-- <div include-with-scope="app/pages/design/widgets/smartTable.html"></div> -->
+        <div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/design/widgets/addModal.html', 'md')">
+      Add design
+    </button>
+  </div>
+</div></br>
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-bordered" st-table="designData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="designNo">Design No</th>
+      <th st-sort="designPrice">Design Price</th>
+      <th st-sort="designType">Design Type</th>
+      <th st-sort="designName">Design Name</th>
+      <th st-sort="designImg">Design Image</th>
+      <th st-sort="designRmrk">Remarks</th>
+      <th>Action</th>
+    </tr>
+    <!-- <tr>
+      <th><input st-search="designFname" placeholder="Search name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="designAddress" placeholder="Search address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="designCity" placeholder="Search city" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="designState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="designCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="designMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="designEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="designType" placeholder="Search type" class="input-sm form-control search-input" type="search"/>
+      </th>
+    </tr> -->
+    </thead>
+    <tbody>
+    <tr ng-repeat="val in designGridData">
+      <td>{{val.designNo}}</td>
+      <td>{{val.designPrice}}</td>
+      <td>{{val.designType}}</td>
+      <td>{{val.designName}}</td>
+      <td>{{val.designImg}}</td>
+      <td>{{val.designRmrk}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editdesign('app/pages/design/widgets/editModal.html', 'md', val._id,val.designNo,val.designPrice,val.designType,val.designName,val.designImg,val.designRmrk)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deletedesign(val._id)" style="cursor: pointer;">Delete</span></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
       </div>
     </div>
   </div>
 
 </div>
+
+
+
+

@@ -1,14 +1,15 @@
-<div class="modal-content" id="adddesign">
+<div class="modal-content" id="editdesign">
   <div class="modal-header">
     <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
       <em class="ion-ios-close-empty sn-link-close"></em>
     </button>
-    <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
+    <h4 class="modal-title" id="myModalLabel">Edit Modal </h4>
   </div>
   <form class="form form-horizontal">
   <div class="modal-body">
       
-        <div class="form-group has-success">
+       <input type="hidden" ng-model="designID">
+          <div class="form-group has-success">
             <label class="col-sm-3 control-label">design No:</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" ng-model="designNo" placeholder="design No">
@@ -49,7 +50,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
-          <button type="button" class="btn btn-success" ng-click="savedesign()">Save changes</button>
+          <button type="button" class="btn btn-success" ng-click="updatedesign()">Update changes</button>
          
   </div>
    </form>

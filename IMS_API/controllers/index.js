@@ -4,6 +4,8 @@ var express = require('express')
 router.use('/dashboard', require('./dashboardCtrl'));
 router.use('/Vender', require('./venderCtrl'));
 router.use('/client', require('./clientCtrl'));
+router.use('/supplier', require('./supplierCtrl'));
+router.use('/design', require('./designCtrl'));
 router.use('/auth', require('./userCtrl'));
 
 module.exports = router
