@@ -9,8 +9,9 @@ user.signin = function (data) {
     var deffered = q.defer();
     console.log("HHHHHH   :: ",data)
     
-    var query = {'email': data.Uname}
+    var query = {'email': data.email}
     dbQuery.findIntoDB(userCollection, query).then(function (auser) {
+        console.log("-------",auser)
         auser = auser[0]
 
         console.log("auser   :: ",auser)
