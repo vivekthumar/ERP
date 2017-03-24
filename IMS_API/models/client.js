@@ -2,7 +2,8 @@ var dbQuery = require('../utils/dbQuery');
 var ObjectId = require('mongodb').ObjectID;
 
 
-clientCollection = "client"
+var clientCollection = "client";
+var activityCollection = "activity";
 
 var user = function () {
 };
@@ -10,7 +11,15 @@ var user = function () {
 user.addClient = function (data) {
     var deffered = q.defer();
     dbQuery.insertIntoDB(clientCollection, data).then(function (auser) {
-        deffered.resolve(auser);
+        var actObj = {};
+        actObj["activityType"] = clientCollection;
+        actObj["activityUser"] = "Kinj";
+        actObj["activityLog"] = data;
+        actObj["activityTimestamp"] = Date.now();
+        actObj["activityStatus"] = "Add";
+        dbQuery.insertIntoDB(activityCollection, actObj).then(function (Auser) {
+            deffered.resolve(auser);
+        });
     }, function (error) {
         deffered.reject(error);
     });
@@ -23,7 +32,15 @@ user.updateClient = function (clientId, setData) {
     console.log("keyOpt  :: ", keyOpt)
 
     dbQuery.updateIntoDB(clientCollection, keyOpt, setData).then(function (auser) {
-        deffered.resolve(auser);
+        // deffered.resolve(auser);
+        var actObj = {};
+        actObj["activityType"] = clientCollection;
+        actObj["activityUser"] = "Kinj";
+        actObj["activityLog"] = data;
+        actObj["activityStatus"] = "Update";
+        dbQuery.insertIntoDB(activityCollection, actObj).then(function (Auser) {
+            deffered.resolve(auser);
+        });
     }, function (error) {
         deffered.reject(error);
     });
@@ -36,7 +53,15 @@ user.deleteClient = function (clientId) {
     console.log("keyOpt  :: ", keyOpt)
     
     dbQuery.removeFromDB(clientCollection, keyOpt).then(function (auser) {
-        deffered.resolve(auser);
+        // deffered.resolve(auser);
+        var actObj = {};
+        actObj["activityType"] = clientCollection;
+        actObj["activityUser"] = "Kinj";
+        actObj["activityLog"] = data;
+        actObj["activityStatus"] = "Delete";
+        dbQuery.insertIntoDB(activityCollection, actObj).then(function (Auser) {
+            deffered.resolve(auser);
+        });
     }, function (error) {
         deffered.reject(error);
     });

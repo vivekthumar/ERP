@@ -1,0 +1,75 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Smart Table With Filtering, Sorting And Pagination" ba-panel-class="with-scroll">
+        <!-- <div include-with-scope="app/pages/activity/widgets/smartTable.html"></div> -->
+        <!-- <div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/activity/widgets/addModal.html', 'md')">
+      Add activity
+    </button>
+  </div>
+</div></br> -->
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-bordered" st-table="activityData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="activityType">Activity Type</th>
+      <th st-sort="activityUser">User</th>
+      <th st-sort="activityTimestamp">Timestamp</th>
+      <th st-sort="activityStatus">Status</th>
+      <th>Action</th>
+    </tr>
+    <!-- <tr>
+      <th><input st-search="activityFname" placeholder="Search name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="activityAddress" placeholder="Search address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="activityCity" placeholder="Search city" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="activityState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="activityCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="activityMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="activityEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="activityType" placeholder="Search type" class="input-sm form-control search-input" type="search"/>
+      </th>
+    </tr> -->
+    </thead>
+    <tbody>
+    <tr ng-repeat="val in activityGridData">
+      <td>{{val.activityType}}</td>
+      <td>{{val.activityLog.user.email}}</td>
+      <td>{{val.activityTimestamp}}</td>
+      <td>{{val.activityStatus}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="viewActivity('app/pages/activity/widgets/viewModal.html', 'md', val.activityLog)" style="margin-bottom:1px; cursor: pointer;">View</span></br><span class="btn-sm bg-danger" ng-click="deleteActivity(val._id)" style="cursor: pointer;">Delete</span></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

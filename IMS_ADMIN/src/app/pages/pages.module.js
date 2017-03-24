@@ -14,6 +14,7 @@
     'BlurAdmin.pages.material',
     'BlurAdmin.pages.suppInventory',
     'BlurAdmin.pages.supplier',
+    'BlurAdmin.pages.activity',
     'BlurAdmin.pages.ui',
     'BlurAdmin.pages.components',
     'BlurAdmin.pages.form',

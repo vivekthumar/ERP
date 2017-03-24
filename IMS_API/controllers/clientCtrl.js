@@ -4,6 +4,7 @@ var express = require('express')
     client = require('../models/client');
 console.log("cTRL")
 router.post('/addClient', function(req, res) {
+    console.log("<<<<<<<<<<<<<<<<<<<<< :: this is controller :: >>>>>>>>>>>>>>>>>>>>>")
 	var data = req.body;
    client.addClient(data).then(function (Rdata) {
         res.send(Rdata)

@@ -9,7 +9,7 @@
       .controller('clientCtrl', clientCtrl);
 
   /** @ngInject */
-  function clientCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
+  function clientCtrl($rootScope, $scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
     
     var modalFlag = false;
     $scope.open = function (page, size) {
@@ -47,7 +47,8 @@
               'clientCountry': $scope.clientCountry,
               'clientMobile': $scope.clientMobile,
               'clientEmail': $scope.clientEmail,
-              'clientType': $scope.clientType
+              'clientType': $scope.clientType,
+              'user':$rootScope.userData
           }
           console.log("dataObj  :: ", dataObj)
 
@@ -64,11 +65,6 @@
               }else{
                 serv.toast.showErrorToast('Client has not been saved..!');
               }
-              
-
-
-              
-              
           });
       }
 
