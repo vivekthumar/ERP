@@ -9,7 +9,7 @@
       .controller('supplierCtrl', supplierCtrl);
 
   /** @ngInject */
-  function supplierCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
+  function supplierCtrl($rootScope, $scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
     
     var modalFlag = false;
     $scope.open = function (page, size) {
@@ -39,7 +39,8 @@
               'supplierState': $scope.supplierState,
               'supplierCountry': $scope.supplierCountry,
               'supplierMobile': $scope.supplierMobile,
-              'supplierEmail': $scope.supplierEmail
+              'supplierEmail': $scope.supplierEmail,
+              'user':$rootScope.userData.email
           }
           console.log("dataObj  :: ", dataObj)
 
@@ -98,7 +99,8 @@
               'supplierState': $scope.supplierState,
               'supplierCountry': $scope.supplierCountry,
               'supplierMobile': $scope.supplierMobile,
-              'supplierEmail': $scope.supplierEmail
+              'supplierEmail': $scope.supplierEmail,
+              'user':$rootScope.userData.email
           }
 
           console.log("dataObj  :: ", dataObj, $scope.supplierID)
@@ -127,19 +129,22 @@
 
       $scope.deletesupplier = function(supplierID){
         console.log("supplierID  :: ", supplierID)
-        $http({
-              method: "POST",
-              url: $scope.baseURL+"supplier/deleteSupplier",
-              data: {'supplierID' : supplierID}
-          }).success(function (res, status, headers) {
-              console.log("res  :: ", res)
-              $scope.getsupplierData();
-              if(res == true){
-                  serv.toast.showSuccessToast('Supplier has been deleted successfully..!');
-                }else{
-                  serv.toast.showErrorToast('Supplier has not been deleted..!');
-                }
-          });
+        var r = confirm("Please confirm you want to delete record ?");
+          if (r == true) {   
+            $http({
+                  method: "POST",
+                  url: $scope.baseURL+"supplier/deleteSupplier",
+                  data: {'supplierID' : supplierID, 'user':$rootScope.userData.email}
+              }).success(function (res, status, headers) {
+                  console.log("res  :: ", res)
+                  $scope.getsupplierData();
+                  if(res == true){
+                      serv.toast.showSuccessToast('Supplier has been deleted successfully..!');
+                    }else{
+                      serv.toast.showErrorToast('Supplier has not been deleted..!');
+                    }
+              });
+            }
       }
 
       $scope.getsupplierData = function(){

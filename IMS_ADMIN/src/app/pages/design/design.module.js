@@ -17,7 +17,7 @@
           controller: 'designCtrl',
           title: 'Design',
           sidebarMeta: {
-            icon: 'glyphicon glyphicon-picture',
+            icon: 'glyphicon glyphicon-gift',
             order: 300,
           },
         })

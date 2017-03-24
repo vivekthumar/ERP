@@ -48,7 +48,7 @@
               'clientMobile': $scope.clientMobile,
               'clientEmail': $scope.clientEmail,
               'clientType': $scope.clientType,
-              'user':$rootScope.userData
+              'user':$rootScope.userData.email
           }
           console.log("dataObj  :: ", dataObj)
 
@@ -109,7 +109,8 @@
               'clientCountry': $scope.clientCountry,
               'clientMobile': $scope.clientMobile,
               'clientEmail': $scope.clientEmail,
-              'clientType': $scope.clientType
+              'clientType': $scope.clientType,
+              'user':$rootScope.userData.email
           }
 
           console.log("dataObj  :: ", dataObj, $scope.clientID)
@@ -137,19 +138,22 @@
       }
 
       $scope.deleteClient = function(clientID){
-        $http({
-              method: "POST",
-              url: $scope.baseURL+"client/deleteClient",
-              data: {'clientID' : clientID}
-          }).success(function (res, status, headers) {
-              console.log("res  :: ", res)
-              $scope.getClientData();
-              if(res == true){
-                serv.toast.showSuccessToast('Client has been deleted successfully..!');
-              }else{
-                serv.toast.showErrorToast('Client has not been deleted..!');
-              }
-          });
+        var r = confirm("Please confirm you want to delete record ?");
+        if (r == true) {          
+          $http({
+                method: "POST",
+                url: $scope.baseURL+"client/deleteClient",
+                data: {'clientID' : clientID, 'user':$rootScope.userData.email}
+            }).success(function (res, status, headers) {
+                console.log("res  :: ", res)
+                $scope.getClientData();
+                if(res == true){
+                  serv.toast.showSuccessToast('Client has been deleted successfully..!');
+                }else{
+                  serv.toast.showErrorToast('Client has not been deleted..!');
+                }
+            });
+          }
       }
 
       $scope.getClientData = function(){

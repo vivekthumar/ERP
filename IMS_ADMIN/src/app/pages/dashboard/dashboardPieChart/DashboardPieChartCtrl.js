@@ -9,30 +9,49 @@
       .controller('DashboardPieChartCtrl', DashboardPieChartCtrl);
 
   /** @ngInject */
-  function DashboardPieChartCtrl($scope, $timeout, baConfig, baUtil) {
+  function DashboardPieChartCtrl($scope, $timeout, baConfig, baUtil, $http) {
     var pieColor = baUtil.hexToRGB(baConfig.colors.defaultText, 0.2);
-    $scope.charts = [{
-      color: pieColor,
-      description: 'New Visits',
-      stats: '57,820',
-      icon: 'person',
-    }, {
-      color: pieColor,
-      description: 'Purchases',
-      stats: '$ 89,745',
-      icon: 'money',
-    }, {
-      color: pieColor,
-      description: 'Active Users',
-      stats: '178,391',
-      icon: 'face',
-    }, {
-      color: pieColor,
-      description: 'Returned',
-      stats: '32,592',
-      icon: 'refresh',
-    }
-    ];
+      
+      $scope.baseURL = "http://localhost:4000/"
+
+
+      $scope.getClientCount = function(){
+          $http({
+              method: "POST",
+              url: $scope.baseURL+"dashboard/getClientCount"
+          }).success(function (res, status, headers) {
+              console.log("res  :: ", res)
+              $scope.clientCount = res.count;
+
+              $scope.charts = [{
+                  color: pieColor,
+                  description: 'Client',
+                  stats: $scope.clientCount,
+                  icon: 'face',
+                }, {
+                  color: pieColor,
+                  description: 'Supplier',
+                  stats: '5',
+                  icon: 'money',
+                }, {
+                  color: pieColor,
+                  description: 'Stock',
+                  stats: '178,391',
+                  icon: 'face',
+                }, {
+                  color: pieColor,
+                  description: 'Earning',
+                  stats: '$ 89,745',
+                  icon: 'money',
+                }
+                ];
+
+          });
+      }
+      $scope.getClientCount();
+
+      
+    
 
     function getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;

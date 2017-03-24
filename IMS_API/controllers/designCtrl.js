@@ -26,6 +26,7 @@ router.post('/updateDesign', function(req, res) {
 
 router.post('/deleteDesign', function(req, res) {
 	var designId = req.body.designID;
+    var user = req.body.user;
     design.deleteDesign(designId).then(function (Rdata) {
         res.send(Rdata)
     }, function (error) {

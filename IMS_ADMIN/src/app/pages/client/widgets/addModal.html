@@ -5,56 +5,65 @@
     </button>
     <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
   </div>
-  <form class="form form-horizontal">
+  <form class="form form-horizontal" name="mForm" novalidate>
   <div class="modal-body">
       
         <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client Full Name:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="clientFname" placeholder="Client Full Name">
+              <input type="text" class="form-control" name="clientFname" ng-model="clientFname" placeholder="Client Full Name" required>
+              <span ng-show="mForm.clientFname.$error.required && mForm.clientFname.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client Address:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="clientAddress" placeholder="Client Address">
+              <input type="text" class="form-control" name="clientAddress" ng-model="clientAddress" placeholder="Client Address" required>
+              <span ng-show="mForm.clientAddress.$error.required && mForm.clientAddress.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client City:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="clientCity" placeholder="Client City">
+              <input type="text" class="form-control" name="clientCity" ng-model="clientCity" placeholder="Client City" required>
+              <span ng-show="mForm.clientCity.$error.required && mForm.clientCity.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client State:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="clientState" placeholder="Client State">
+              <input type="text" class="form-control" name="clientState" ng-model="clientState" placeholder="Client State" required>
+              <span ng-show="mForm.clientState.$error.required && mForm.clientState.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client Country:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="clientCountry" placeholder="Client Country">
+              <input type="text" class="form-control" name="clientCountry" ng-model="clientCountry" placeholder="Client Country" required>
+              <span ng-show="mForm.clientCountry.$error.required && mForm.clientCountry.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client Mobile:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="clientMobile" placeholder="Client Mobile">
+              <input type="text" class="form-control" name="clientMobile" ng-model="clientMobile" placeholder="Client Mobile" ng-pattern="/^[0-9]{10}$/" required>
+              <span ng-show="mForm.clientMobile.$error.pattern && mForm.clientMobile.$touched" style="color:red">Not a valid number!</span>
+              <span ng-show="mForm.clientMobile.$error.required && mForm.clientMobile.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client Email:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="clientEmail" placeholder="Client Email">
+              <input type="email" class="form-control" name="clientEmail" ng-model="clientEmail" placeholder="Client Email" ng-pattern="/^.+@.+\..+$/" required>
+              <span ng-show="mForm.clientEmail.$error.pattern && mForm.clientEmail.$touched" style="color:red">Not a valid Email!</span>
+              <span ng-show="mForm.clientEmail.$error.required && mForm.clientEmail.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Client Type:</label>
             <div class="col-sm-7">
               <select class="form-control selectpicker show-tick" title="Select ClientType" selectpicker
-                 ng-model="clientType" ng-options="key for (key, val) in clientTypeObj">
+                 ng-model="clientType" ng-options="key for (key, val) in clientTypeObj" required>
               </select>
             </div>
           </div>   
@@ -63,7 +72,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
-          <button type="button" class="btn btn-success" ng-click="saveClient()">Save changes</button>
+          <button type="button" class="btn btn-success" ng-disabled="mForm.$invalid || mForm.$pristine" ng-click="saveClient()">Save changes</button>
          
   </div>
    </form>

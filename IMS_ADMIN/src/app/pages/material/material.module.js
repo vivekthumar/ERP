@@ -17,7 +17,7 @@
           controller: 'materialCtrl',
           title: 'Material',
           sidebarMeta: {
-            icon: 'glyphicon glyphicon-picture',
+            icon: 'glyphicon glyphicon-list-alt',
             order: 300,
           },
         })

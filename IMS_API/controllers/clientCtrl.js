@@ -26,8 +26,9 @@ router.post('/updateClient', function(req, res) {
 });
 
 router.post('/deleteClient', function(req, res) {
-	var clientId = req.body.clientID;
-    client.deleteClient(clientId).then(function (Rdata) {
+    var clientId = req.body.clientID;
+	var user = req.body.user;
+    client.deleteClient(clientId, user).then(function (Rdata) {
         res.send(Rdata)
     }, function (error) {
         res.send(error)

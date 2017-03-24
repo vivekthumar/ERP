@@ -26,6 +26,7 @@ router.post('/updateSupplier', function(req, res) {
 
 router.post('/deleteSupplier', function(req, res) {
 	var supplierId = req.body.supplierID;
+    var user = req.body.user;
     supplier.deleteSupplier(supplierId).then(function (Rdata) {
         res.send(Rdata)
     }, function (error) {

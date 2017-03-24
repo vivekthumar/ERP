@@ -17,7 +17,7 @@
           controller: 'clientCtrl',
           title: 'Client',
           sidebarMeta: {
-            icon: 'glyphicon glyphicon-picture',
+            icon: 'glyphicon glyphicon-user',
             order: 300,
           },
         })

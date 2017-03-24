@@ -17,7 +17,7 @@
           controller: 'supplierCtrl',
           title: 'Supplier',
           sidebarMeta: {
-            icon: 'glyphicon glyphicon-picture',
+            icon: 'glyphicon glyphicon-import',
             order: 300,
           },
         })

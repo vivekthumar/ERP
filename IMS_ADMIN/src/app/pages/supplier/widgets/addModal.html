@@ -5,49 +5,58 @@
     </button>
     <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
   </div>
-  <form class="form form-horizontal">
+ <form class="form form-horizontal" name="mForm" novalidate>
   <div class="modal-body">
       
         <div class="form-group has-success">
             <label class="col-sm-3 control-label">supplier Full Name:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="supplierFname" placeholder="supplier Full Name">
+              <input type="text" class="form-control" name="supplierFname" ng-model="supplierFname" placeholder="supplier Full Name" required>
+              <span ng-show="mForm.supplierFname.$error.required && mForm.supplierFname.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">supplier Address:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="supplierAddress" placeholder="supplier Address">
+              <input type="text" class="form-control" name="supplierAddress" ng-model="supplierAddress" placeholder="supplier Address" required>
+              <span ng-show="mForm.supplierAddress.$error.required && mForm.supplierAddress.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">supplier City:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="supplierCity" placeholder="supplier City">
+              <input type="text" class="form-control" name="supplierCity" ng-model="supplierCity" placeholder="supplier City" required>
+              <span ng-show="mForm.supplierCity.$error.required && mForm.supplierCity.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">supplier State:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="supplierState" placeholder="supplier State">
+              <input type="text" class="form-control" name="supplierState" ng-model="supplierState" placeholder="supplier State" required>
+              <span ng-show="mForm.supplierState.$error.required && mForm.supplierState.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">supplier Country:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="supplierCountry" placeholder="supplier Country">
+              <input type="text" class="form-control" name="supplierCountry" ng-model="supplierCountry" placeholder="supplier Country" required>
+              <span ng-show="mForm.supplierCountry.$error.required && mForm.supplierCountry.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">supplier Mobile:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="supplierMobile" placeholder="supplier Mobile">
+              <input type="text" class="form-control" name="supplierMobile" ng-model="supplierMobile" placeholder="supplier Mobile" ng-pattern="/^[0-9]{10}$/" required>
+              <span ng-show="mForm.supplierMobile.$error.pattern && mForm.supplierMobile.$touched" style="color:red">Not a valid number!</span>
+              <span ng-show="mForm.supplierMobile.$error.required && mForm.supplierMobile.$touched" style="color:red">This field is required!</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">supplier Email:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="supplierEmail" placeholder="supplier Email">
+              <input type="text" class="form-control" name="supplierEmail" ng-model="supplierEmail" placeholder="supplier Email" ng-pattern="/^.+@.+\..+$/" required>
+              <span ng-show="mForm.supplierEmail.$error.pattern && mForm.supplierEmail.$touched" style="color:red">Not a valid Email!</span>
+              <span ng-show="mForm.supplierEmail.$error.required && mForm.supplierEmail.$touched" style="color:red">This field is required!</span>
             </div>
           </div> 
       
@@ -55,7 +64,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
-          <button type="button" class="btn btn-success" ng-click="savesupplier()">Save changes</button>
+          <button type="button" class="btn btn-success"  ng-disabled="mForm.$invalid || mForm.$pristine" ng-click="savesupplier()">Save changes</button>
          
   </div>
    </form>

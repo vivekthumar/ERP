@@ -17,7 +17,7 @@
           controller: 'activityCtrl',
           title: 'Activity',
           sidebarMeta: {
-            icon: 'glyphicon glyphicon-picture',
+            icon: 'glyphicon glyphicon-eye-open',
             order: 300,
           },
         })

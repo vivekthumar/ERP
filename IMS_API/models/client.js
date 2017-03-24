@@ -13,9 +13,9 @@ user.addClient = function (data) {
     dbQuery.insertIntoDB(clientCollection, data).then(function (auser) {
         var actObj = {};
         actObj["activityType"] = clientCollection;
-        actObj["activityUser"] = "Kinj";
+        actObj["activityUser"] = data.user;
         actObj["activityLog"] = data;
-        actObj["activityTimestamp"] = Date.now();
+        actObj["activityTimestamp"] = new Date();
         actObj["activityStatus"] = "Add";
         dbQuery.insertIntoDB(activityCollection, actObj).then(function (Auser) {
             deffered.resolve(auser);
@@ -35,9 +35,10 @@ user.updateClient = function (clientId, setData) {
         // deffered.resolve(auser);
         var actObj = {};
         actObj["activityType"] = clientCollection;
-        actObj["activityUser"] = "Kinj";
-        actObj["activityLog"] = data;
+        actObj["activityUser"] = setData.user;;
+        actObj["activityLog"] = setData;
         actObj["activityStatus"] = "Update";
+        actObj["activityTimestamp"] = new Date();
         dbQuery.insertIntoDB(activityCollection, actObj).then(function (Auser) {
             deffered.resolve(auser);
         });
@@ -47,7 +48,7 @@ user.updateClient = function (clientId, setData) {
     return deffered.promise;
 };
 
-user.deleteClient = function (clientId) {
+user.deleteClient = function (clientId, user) {
     var deffered = q.defer();
     var keyOpt ={ "_id" : ObjectId(clientId) }
     console.log("keyOpt  :: ", keyOpt)
@@ -56,9 +57,10 @@ user.deleteClient = function (clientId) {
         // deffered.resolve(auser);
         var actObj = {};
         actObj["activityType"] = clientCollection;
-        actObj["activityUser"] = "Kinj";
-        actObj["activityLog"] = data;
+        actObj["activityUser"] = user;;
+        actObj["activityLog"] = {'clientId': clientId, 'user':user};
         actObj["activityStatus"] = "Delete";
+        actObj["activityTimestamp"] = new Date();
         dbQuery.insertIntoDB(activityCollection, actObj).then(function (Auser) {
             deffered.resolve(auser);
         });

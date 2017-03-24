@@ -17,7 +17,7 @@
           controller: 'suppInventoryCtrl',
           title: 'Supplier Inventory',
           sidebarMeta: {
-            icon: 'glyphicon glyphicon-picture',
+            icon: 'glyphicon glyphicon-list',
             order: 300,
           },
         })

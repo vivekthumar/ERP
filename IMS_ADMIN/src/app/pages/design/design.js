@@ -9,7 +9,7 @@
       .controller('designCtrl', designCtrl);
 
   /** @ngInject */
-  function designCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
+  function designCtrl($rootScope, $scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
     
     var modalFlag = false;
     $scope.open = function (page, size) {
@@ -38,7 +38,8 @@
               'designType': $scope.designType,
               'designName': $scope.designName,
               'designImg': $scope.designImg,
-              'designRmrk': $scope.designRmrk
+              'designRmrk': $scope.designRmrk,
+              'user':$rootScope.userData.email
           }
           console.log("dataObj  :: ", dataObj)
 
@@ -93,7 +94,8 @@
               'designType': $scope.designType,
               'designName': $scope.designName,
               'designImg': $scope.designImg,
-              'designRmrk': $scope.designRmrk
+              'designRmrk': $scope.designRmrk,
+              'user':$rootScope.userData.email
           }
 
           console.log("dataObj  :: ", dataObj, $scope.designID)
@@ -121,19 +123,22 @@
       }
 
       $scope.deletedesign = function(designID){
-        $http({
-              method: "POST",
-              url: $scope.baseURL+"design/deleteDesign",
-              data: {'designID' : designID}
-          }).success(function (res, status, headers) {
-              console.log("res  :: ", res)
-              $scope.getdesignData();
-              if(res == true){
-                serv.toast.showSuccessToast('Design has been deleted successfully..!');
-              }else{
-                serv.toast.showErrorToast('Design has not been deleted..!');
-              }
-          });
+        var r = confirm("Please confirm you want to delete record ?");
+        if (r == true) {   
+          $http({
+                method: "POST",
+                url: $scope.baseURL+"design/deleteDesign",
+                data: {'designID' : designID, 'user':$rootScope.userData.email}
+            }).success(function (res, status, headers) {
+                console.log("res  :: ", res)
+                $scope.getdesignData();
+                if(res == true){
+                  serv.toast.showSuccessToast('Design has been deleted successfully..!');
+                }else{
+                  serv.toast.showErrorToast('Design has not been deleted..!');
+                }
+            });
+          }
       }
 
       $scope.getdesignData = function(){
