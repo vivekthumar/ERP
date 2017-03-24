@@ -1,0 +1,70 @@
+<div class="modal-content" id="addSuppInventory">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
+  </div>
+  <form class="form form-horizontal">
+  <div class="modal-body">
+      
+        <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory Full Name:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="suppInventoryFname" placeholder="SuppInventory Full Name">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory Address:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="suppInventoryAddress" placeholder="SuppInventory Address">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory City:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="suppInventoryCity" placeholder="SuppInventory City">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory State:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="suppInventoryState" placeholder="SuppInventory State">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory Country:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="suppInventoryCountry" placeholder="SuppInventory Country">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory Mobile:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="suppInventoryMobile" placeholder="SuppInventory Mobile">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory Email:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="suppInventoryEmail" placeholder="SuppInventory Email">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">SuppInventory Type:</label>
+            <div class="col-sm-7">
+              <select class="form-control selectpicker show-tick" title="Select SuppInventoryType" selectpicker
+                 ng-model="suppInventoryType" ng-options="key for (key, val) in suppInventoryTypeObj">
+              </select>
+            </div>
+          </div>   
+      
+          
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
+          <button type="button" class="btn btn-success" ng-click="saveSuppInventory()">Save changes</button>
+         
+  </div>
+   </form>
+</div>

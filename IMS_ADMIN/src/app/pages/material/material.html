@@ -1,0 +1,83 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Smart Table With Filtering, Sorting And Pagination" ba-panel-class="with-scroll">
+        <!-- <div include-with-scope="app/pages/material/widgets/smartTable.html"></div> -->
+        <div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/material/widgets/addModal.html', 'md')">
+      Add material
+    </button>
+  </div>
+</div></br>
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-bordered" st-table="materialData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="materialFname">Full Name</th>
+      <th st-sort="materialAddress">Address</th>
+      <th st-sort="materialCity">City</th>
+      <th st-sort="materialState">State</th>
+      <th st-sort="materialCountry">County</th>
+      <th st-sort="materialMobile">Mobile</th>
+      <th st-sort="materialEmail">Email</th>
+      <th st-sort="materialType">type</th>
+      <th>Action</th>
+    </tr>
+    <!-- <tr>
+      <th><input st-search="materialFname" placeholder="Search name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="materialAddress" placeholder="Search address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="materialCity" placeholder="Search city" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="materialState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="materialCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="materialMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="materialEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="materialType" placeholder="Search type" class="input-sm form-control search-input" type="search"/>
+      </th>
+    </tr> -->
+    </thead>
+    <tbody>
+    <tr ng-repeat="val in materialGridData">
+      <td>{{val.materialFname}}</td>
+      <td>{{val.materialAddress}}</td>
+      <td>{{val.materialCity}}</td>
+      <td>{{val.materialState}}</td>
+      <td>{{val.materialCountry}}</td>
+      <td>{{val.materialMobile}}</td>
+      <td>{{val.materialEmail}}</td>
+      <td>{{val.materialType}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editMaterial('app/pages/material/widgets/editModal.html', 'md', val._id,val.materialFname,val.materialAddress,val.materialCity,val.materialState,val.materialCountry,val.materialMobile,val.materialEmail,val.materialType)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteMaterial(val._id)" style="cursor: pointer;">Delete</span></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

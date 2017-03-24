@@ -1,0 +1,83 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Smart Table With Filtering, Sorting And Pagination" ba-panel-class="with-scroll">
+        <!-- <div include-with-scope="app/pages/suppInventory/widgets/smartTable.html"></div> -->
+        <div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/suppInventory/widgets/addModal.html', 'md')">
+      Add suppInventory
+    </button>
+  </div>
+</div></br>
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-bordered" st-table="suppInventoryData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="suppInventoryFname">Full Name</th>
+      <th st-sort="suppInventoryAddress">Address</th>
+      <th st-sort="suppInventoryCity">City</th>
+      <th st-sort="suppInventoryState">State</th>
+      <th st-sort="suppInventoryCountry">County</th>
+      <th st-sort="suppInventoryMobile">Mobile</th>
+      <th st-sort="suppInventoryEmail">Email</th>
+      <th st-sort="suppInventoryType">type</th>
+      <th>Action</th>
+    </tr>
+    <!-- <tr>
+      <th><input st-search="suppInventoryFname" placeholder="Search name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="suppInventoryAddress" placeholder="Search address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="suppInventoryCity" placeholder="Search city" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="suppInventoryState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="suppInventoryCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="suppInventoryMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="suppInventoryEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="suppInventoryType" placeholder="Search type" class="input-sm form-control search-input" type="search"/>
+      </th>
+    </tr> -->
+    </thead>
+    <tbody>
+    <tr ng-repeat="val in suppInventoryGridData">
+      <td>{{val.suppInventoryFname}}</td>
+      <td>{{val.suppInventoryAddress}}</td>
+      <td>{{val.suppInventoryCity}}</td>
+      <td>{{val.suppInventoryState}}</td>
+      <td>{{val.suppInventoryCountry}}</td>
+      <td>{{val.suppInventoryMobile}}</td>
+      <td>{{val.suppInventoryEmail}}</td>
+      <td>{{val.suppInventoryType}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editSuppInventory('app/pages/suppInventory/widgets/editModal.html', 'md', val._id,val.suppInventoryFname,val.suppInventoryAddress,val.suppInventoryCity,val.suppInventoryState,val.suppInventoryCountry,val.suppInventoryMobile,val.suppInventoryEmail,val.suppInventoryType)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteSuppInventory(val._id)" style="cursor: pointer;">Delete</span></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

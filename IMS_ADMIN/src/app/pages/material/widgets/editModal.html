@@ -1,0 +1,71 @@
+<div class="modal-content" id="editMaterial">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Edit Modal </h4>
+  </div>
+  <form class="form form-horizontal">
+  <div class="modal-body">
+      
+       <input type="hidden" ng-model="materialID">
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material Full Name:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="materialFname" placeholder="Material Full Name">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material Address:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="materialAddress" placeholder="Material Address">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material City:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="materialCity" placeholder="Material City">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material State:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="materialState" placeholder="Material State">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material Country:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="materialCountry" placeholder="Material Country">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material Mobile:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="materialMobile" placeholder="Material Mobile">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material Email:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="materialEmail" placeholder="Material Email">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material Type:</label>
+            <div class="col-sm-7">
+              <select class="form-control selectpicker show-tick" title="Select MaterialType" selectpicker
+                                    ng-model="materialType" ng-options="key for (key, val) in materialTypeObj">
+                            </select>
+            </div>
+          </div>
+      
+          
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
+          <button type="button" class="btn btn-success" ng-click="updateMaterial()">Update changes</button>
+         
+  </div>
+   </form>
+</div>

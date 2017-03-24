@@ -11,6 +11,8 @@
     'BlurAdmin.pages.dashboard',
     'BlurAdmin.pages.design',
     'BlurAdmin.pages.client',
+    'BlurAdmin.pages.material',
+    'BlurAdmin.pages.suppInventory',
     'BlurAdmin.pages.supplier',
     'BlurAdmin.pages.ui',
     'BlurAdmin.pages.components',
