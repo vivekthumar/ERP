@@ -1,0 +1,108 @@
+<div class="modal-content" id="addJobwork">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
+  </div>
+  <form class="form form-horizontal">
+  <div class="modal-body">
+      
+        <div class="form-group has-success">
+            <label class="col-sm-3 control-label">suppliers:</label>
+            <div class="col-sm-7">
+              <select class="form-control selectpicker show-tick" title="Select Suppliers" selectpicker
+                 ng-model="suppliers" ng-options="key.supplierFname for key in supplierGridData">
+              </select>
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Design Type:</label>
+            <div class="col-sm-7">
+              <select class="form-control selectpicker show-tick" title="Select DesignType" selectpicker
+                 ng-model="designType" ng-options="key.designType for key in designGridData">
+              </select>
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Design Name:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="designName" placeholder="Design Name">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Client:</label>
+            <div class="col-sm-7">
+              <select class="form-control selectpicker show-tick" title="Select Client" selectpicker
+                 ng-model="clientname" ng-options="key.clientFname for key in clientGridData">
+              </select>
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">No of Pitch:</label>
+            <div class="col-sm-7">
+              <input type="number" class="form-control" ng-model="noPitch" placeholder="No of Pitch">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Price per Pitch:</label>
+            <div class="col-sm-7">
+              <input type="number" class="form-control" ng-model="pricePerPitch" placeholder="Enter Price per Pitch">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Total Amount:</label>
+            <div class="col-sm-7">
+              <input disabled="true" type="text" class="form-control" ng-model="totalAmount" placeholder="Total Amount">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Deadline:</label>
+            <div class="col-sm-7">
+              <datepicker>
+                <input type="date" class="form-control" ng-model="totalAmount" placeholder="Total Amount">
+              </datepicker>
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Material:</label>
+            <div class="col-sm-7">
+              <select class="form-control selectpicker show-tick" title="Select Material" selectpicker
+                 ng-model="material" ng-options="key for (key, val) in jobworkTypeObj">
+              </select>
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">No of Material Item:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="noOfMaterial" placeholder="Enter No of Material Item">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Process Type:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="processType" placeholder="Select Process Type">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">Status:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="status" placeholder="Status">
+            </div>
+          </div>
+          <div class="form-group has-success">
+            <label class="col-sm-3 control-label">timestamp:</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" ng-model="status" placeholder="Status">
+            </div>
+          </div>
+      
+          
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
+          <button type="button" class="btn btn-success" ng-click="saveJobwork()">Save changes</button>
+         
+  </div>
+   </form>
+</div>

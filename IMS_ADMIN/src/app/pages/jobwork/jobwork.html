@@ -1,0 +1,83 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Smart Table With Filtering, Sorting And Pagination" ba-panel-class="with-scroll">
+        <!-- <div include-with-scope="app/pages/jobwork/widgets/smartTable.html"></div> -->
+        <div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="open('app/pages/jobwork/widgets/addModal.html', 'md')">
+      Add jobwork
+    </button>
+  </div>
+</div></br>
+<div class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <table class="table table-bordered" st-table="jobworkData">
+    <thead>
+    <tr class="sortable ">
+      <th st-sort="jobworkFname">Full Name</th>
+      <th st-sort="jobworkAddress">Address</th>
+      <th st-sort="jobworkCity">City</th>
+      <th st-sort="jobworkState">State</th>
+      <th st-sort="jobworkCountry">County</th>
+      <th st-sort="jobworkMobile">Mobile</th>
+      <th st-sort="jobworkEmail">Email</th>
+      <th st-sort="jobworkType">type</th>
+      <th>Action</th>
+    </tr>
+    <!-- <tr>
+      <th><input st-search="jobworkFname" placeholder="Search name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="jobworkAddress" placeholder="Search address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="jobworkCity" placeholder="Search city" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="jobworkState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="jobworkCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="jobworkMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="jobworkEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="jobworkType" placeholder="Search type" class="input-sm form-control search-input" type="search"/>
+      </th>
+    </tr> -->
+    </thead>
+    <tbody>
+    <tr ng-repeat="val in jobworkGridData">
+      <td>{{val.jobworkFname}}</td>
+      <td>{{val.jobworkAddress}}</td>
+      <td>{{val.jobworkCity}}</td>
+      <td>{{val.jobworkState}}</td>
+      <td>{{val.jobworkCountry}}</td>
+      <td>{{val.jobworkMobile}}</td>
+      <td>{{val.jobworkEmail}}</td>
+      <td>{{val.jobworkType}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editJobwork('app/pages/jobwork/widgets/editModal.html', 'md', val._id,val.jobworkFname,val.jobworkAddress,val.jobworkCity,val.jobworkState,val.jobworkCountry,val.jobworkMobile,val.jobworkEmail,val.jobworkType)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteJobwork(val._id)" style="cursor: pointer;">Delete</span></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

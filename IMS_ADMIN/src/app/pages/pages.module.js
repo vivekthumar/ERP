@@ -13,6 +13,7 @@
     'BlurAdmin.pages.client',
     'BlurAdmin.pages.material',
     'BlurAdmin.pages.suppInventory',
+    'BlurAdmin.pages.jobwork',
     'BlurAdmin.pages.supplier',
     'BlurAdmin.pages.activity',
     'BlurAdmin.pages.ui',
