@@ -5,7 +5,7 @@
     </button>
     <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
   </div>
-  <form class="form form-horizontal">
+  <form class="form form-horizontal" name="mForm" novalidate>
   <div class="modal-body">
       
         <div class="form-group has-success">
@@ -39,28 +39,28 @@
             </div>
           </div>
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">No of Pitch:</label>
+            <label class="col-sm-3 control-label">No of Piece:</label>
             <div class="col-sm-7">
               <input type="number" class="form-control" ng-model="noPitch" placeholder="No of Pitch">
             </div>
           </div>
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Price per Pitch:</label>
+            <label class="col-sm-3 control-label">Price per Piece:</label>
             <div class="col-sm-7">
-              <input type="number" class="form-control" ng-model="pricePerPitch" placeholder="Enter Price per Pitch">
+              <input type="number" class="form-control" ng-model="pricePerPitch" placeholder="Enter Price per Piece">
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Total Amount:</label>
             <div class="col-sm-7">
-              <input disabled="true" type="text" class="form-control" ng-model="totalAmount" placeholder="Total Amount">
+              <span class="form-control" ng-model="totalAmount">{{noPitch * pricePerPitch}}</span>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Deadline:</label>
             <div class="col-sm-7">
               <datepicker>
-                <input type="date" class="form-control" ng-model="totalAmount" placeholder="Total Amount">
+                <input type="date" class="form-control" ng-model="deadLine" placeholder="Total Amount">
               </datepicker>
             </div>
           </div>
@@ -68,36 +68,34 @@
             <label class="col-sm-3 control-label">Material:</label>
             <div class="col-sm-7">
               <select class="form-control selectpicker show-tick" title="Select Material" selectpicker
-                 ng-model="material" ng-options="key for (key, val) in jobworkTypeObj">
+                 ng-model="material" ng-options="key.materialType for (key, val) in materialGridData">
               </select>
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">No of Material Item:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="noOfMaterial" placeholder="Enter No of Material Item">
+              <input type="number" class="form-control" ng-model="noOfMaterial" placeholder="Enter No of Material Item">
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Process Type:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="processType" placeholder="Select Process Type">
+              <select class="form-control selectpicker show-tick" title="Select Process Type" selectpicker
+                 ng-model="processType" ng-options="key for (key, val) in jobworkTypeObj">
+              </select>
+              <!-- <input type="text" class="form-control" ng-model="processType" placeholder="Select Process Type"> -->
             </div>
           </div>
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">Status:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="status" placeholder="Status">
+              <select class="form-control selectpicker show-tick" title="Select job status" selectpicker
+                 ng-model="status" ng-options="key for key in statusArr">
+              </select>
+              <!-- <input type="text" class="form-control" ng-model="status" placeholder="Status"> -->
             </div>
           </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">timestamp:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="status" placeholder="Status">
-            </div>
-          </div>
-      
-          
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>

@@ -13,52 +13,63 @@
     
     var modalFlag = false;
     $scope.open = function (page, size) {
-
-      $scope.getsupplierData = function(){
-          $http({
-              method: "POST",
-              url:  $scope.baseURL+"supplier/getSupplierData"
-          }).success(function (res, status, headers) {
-              $scope.supplierGridData = res;
-          });
-      }
-      $scope.getdesignData = function(){
-          $http({
-              method: "POST",
-              url:  $scope.baseURL+"design/getDesignData"
-          }).success(function (res, status, headers) {
-              $scope.designGridData = res;
-          });
-      }
-      $scope.getClientData = function(){
-          $http({
-              method: "POST",
-              url:  $scope.baseURL+"client/getClientData"
-          }).success(function (res, status, headers) {
-              $scope.clientGridData = res;
-              modalFlag = true;
-              $scope.modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: page,
-                controller:jobworkCtrl,
-                size: size,
-                scope: $scope,
-                resolve: {
-                  items: function () {
-                    return $scope.items;
-                  }
-                }
-              });
-          });
-      }
-      $scope.getsupplierData();
-      $scope.getdesignData();
-      $scope.getClientData();
+      modalFlag = true;
+      $scope.modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: page,
+        controller:jobworkCtrl,
+        size: size,
+        scope: $scope,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+      console.log($scope.suppliers)
     };
+    $scope.baseURL = "http://localhost:4000/";
+
+    $scope.getsupplierData = function(){
+        $http({
+            method: "POST",
+            url:  $scope.baseURL+"supplier/getSupplierData"
+        }).success(function (res, status, headers) {
+            $scope.supplierGridData = res;
+        });
+    }
+    $scope.getdesignData = function(){
+        $http({
+            method: "POST",
+            url:  $scope.baseURL+"design/getDesignData"
+        }).success(function (res, status, headers) {
+            $scope.designGridData = res;
+        });
+    }
+    $scope.getClientData = function(){
+        $http({
+            method: "POST",
+            url:  $scope.baseURL+"client/getClientData"
+        }).success(function (res, status, headers) {
+            $scope.clientGridData = res;
+            
+        });
+    }
+    $scope.getMaterialData = function(){
+        $http({
+            method: "POST",
+            url:  $scope.baseURL+"client/getMaterialData"
+        }).success(function (res, status, headers) {
+            $scope.materialGridData = res;
+            
+        });
+    }
+    $scope.getsupplierData();
+    $scope.getdesignData();
+    $scope.getClientData();
+    $scope.getMaterialData();
+
     $scope.openProgressDialog = baProgressModal.open;
-
-    $scope.baseURL = "http://localhost:4000/"
-
 
       $scope.jobworkTypeObj = {
         "Hand-work": "Hand-work",
@@ -66,16 +77,22 @@
         "Silai": "Silai"
       }
 
+      $scope.statusArr = ["inprogress", "rework", "completed", "release" ]
+
       $scope.saveJobwork = function(){
           var dataObj = {
-              'jobworkFname': $scope.jobworkFname,
-              'jobworkAddress': $scope.jobworkAddress,
-              'jobworkCity': $scope.jobworkCity,
-              'jobworkState': $scope.jobworkState,
-              'jobworkCountry': $scope.jobworkCountry,
-              'jobworkMobile': $scope.jobworkMobile,
-              'jobworkEmail': $scope.jobworkEmail,
-              'jobworkType': $scope.jobworkType
+              'suppliers': $scope.suppliers ? $scope.suppliers.supplierFname : "",
+              'designType': $scope.designType ? $scope.designType.designType : "",
+              'designName': $scope.designName,
+              'clientname': $scope.clientname ? $scope.clientname.clientFname : "",
+              'noPitch': $scope.noPitch,
+              'pricePerPitch': $scope.pricePerPitch,
+              'totalAmount': $scope.noPitch * $scope.pricePerPitch,
+              'deadLine': $scope.deadLine,
+              'material': $scope.material ? $scope.material.materialType : "",
+              'noOfMaterial': $scope.noOfMaterial,
+              'processType': $scope.processType,
+              'status': $scope.status
           }
           console.log("dataObj  :: ", dataObj)
 
@@ -91,7 +108,8 @@
                   serv.toast.showSuccessToast('Jobwork has been saved successfully..!');
               }else{
                 serv.toast.showErrorToast('Jobwork has not been saved..!');
-              }  
+              }
+              $scope.$apply();
           });
       }
 
@@ -127,15 +145,19 @@
 
 
       $scope.updateJobwork = function(){
-         var dataObj = {
-              'jobworkFname': $scope.jobworkFname,
-              'jobworkAddress': $scope.jobworkAddress,
-              'jobworkCity': $scope.jobworkCity,
-              'jobworkState': $scope.jobworkState,
-              'jobworkCountry': $scope.jobworkCountry,
-              'jobworkMobile': $scope.jobworkMobile,
-              'jobworkEmail': $scope.jobworkEmail,
-              'jobworkType': $scope.jobworkType
+          var dataObj = {
+              'suppliers': $scope.suppliers ? $scope.suppliers.supplierFname : "",
+              'designType': $scope.designType ? $scope.designType.designType : "",
+              'designName': $scope.designName,
+              'clientname': $scope.clientname ? $scope.clientname.clientFname : "",
+              'noPitch': $scope.noPitch,
+              'pricePerPitch': $scope.pricePerPitch,
+              'totalAmount': $scope.noPitch * $scope.pricePerPitch,
+              'deadLine': $scope.deadLine,
+              'material': $scope.material ? $scope.material.materialType : "",
+              'noOfMaterial': $scope.noOfMaterial,
+              'processType': $scope.processType,
+              'status': $scope.status
           }
 
           console.log("dataObj  :: ", dataObj, $scope.jobworkID)
