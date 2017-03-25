@@ -36,6 +36,11 @@
             url:  $scope.baseURL+"supplier/getSupplierData"
         }).success(function (res, status, headers) {
             $scope.supplierGridData = res;
+            console.log("+++++++",$scope.suppliers)
+            if($scope.suppliers){
+              var index = $scope.supplierGridData ? $scope.supplierGridData.findIndex(x => x.supplierFname==$scope.suppliers) : 0;
+              $scope.suppliers = $scope.supplierGridData[index];
+            }
         });
     }
     $scope.getdesignData = function(){
@@ -44,6 +49,10 @@
             url:  $scope.baseURL+"design/getDesignData"
         }).success(function (res, status, headers) {
             $scope.designGridData = res;
+            if($scope.designType){
+              var index = $scope.designGridData ? $scope.designGridData.findIndex(x => x.designType==$scope.designType) : 0;
+              $scope.designType = $scope.designGridData[index];
+            }
         });
     }
     $scope.getClientData = function(){
@@ -52,7 +61,10 @@
             url:  $scope.baseURL+"client/getClientData"
         }).success(function (res, status, headers) {
             $scope.clientGridData = res;
-            
+            if($scope.clientname){
+              var index = $scope.clientGridData ? $scope.clientGridData.findIndex(x => x.clientFname==$scope.clientname) : 0;
+              $scope.clientname = $scope.clientGridData[index];
+            }
         });
     }
     $scope.getMaterialData = function(){
@@ -113,19 +125,22 @@
           });
       }
 
-      $scope.editJobwork = function(page, size, jobworkID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType){
+      $scope.editJobwork = function(page, size, jobworkID,suppliers,designType,designName,clientname,noPitch,pricePerPitch,totalAmount,deadLine,material,noOfMaterial,processType,status){
         
         modalFlag = true;
 
-        $scope.jobworkFname = tdFname
-        $scope.jobworkAddress = tdAdd
-        $scope.jobworkCity = tdCity
-        $scope.jobworkState = tdState
-        $scope.jobworkCountry = tdCountry
-        $scope.jobworkMobile = tdMobile
-        $scope.jobworkEmail = tdEmail
-        $scope.jobworkType = tdType
-        $scope.jobworkID = jobworkID
+        $scope.suppliers = suppliers;
+        $scope.designType = designType;
+        $scope.designName = designName;
+        $scope.clientname = clientname;
+        $scope.noPitch = noPitch;
+        $scope.pricePerPitch = pricePerPitch;
+        $scope.totalAmount = totalAmount;
+        $scope.deadLine = new Date(deadLine);
+        $scope.material = material;
+        $scope.noOfMaterial = noOfMaterial;
+        $scope.processType = processType;
+        $scope.status = status;
 
 
         $scope.modalInstance = $uibModal.open({
