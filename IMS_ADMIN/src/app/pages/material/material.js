@@ -79,6 +79,7 @@ $scope.tags = "kkkkjhkjhkjhkj"
         $scope.materialCost = tdState
         $scope.materialPending = tdCountry
         $scope.materialRemarks = tdMobile
+         $scope.materialID = materialID
 
         $scope.modalInstance = $uibModal.open({
           animation: true,

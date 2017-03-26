@@ -11,13 +11,13 @@
   /** @ngInject */
   function suppInventoryCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
     $scope.suppInventoryName,
-  $scope.suppInventoryItemName,
-  $scope.suppInventoryTotalLength,
-  $scope.suppInventoryItemPrMeter,
-  $scope.suppInventoryApproxMeter,
-  $scope.suppInventoryChallan,
-  $scope.suppInventoryPendingItem,
-  $scope.suppInventoryRemarks;
+    $scope.suppInventoryItemName,
+    $scope.suppInventoryTotalLength,
+    $scope.suppInventoryItemPrMeter,
+    $scope.suppInventoryApproxMeter,
+    $scope.suppInventoryChallan,
+    $scope.suppInventoryPendingItem,
+    $scope.suppInventoryRemarks;
     var modalFlag = false;
     $scope.open = function (page, size) {
       modalFlag = true;
@@ -38,7 +38,21 @@
 
     $scope.baseURL = "http://localhost:4000/"
 
-
+      $scope.getsupplierData = function(){
+        $http({
+            method: "POST",
+            url:  $scope.baseURL+"supplier/getSupplierData"
+        }).success(function (res, status, headers) {
+            $scope.supplierGridData = res;
+            console.log("+++++++",$scope.supplierGridData)
+            if($scope.suppInventoryName){
+              var index = $scope.supplierGridData ? $scope.supplierGridData.findIndex(x => x.supplierFname==$scope.suppInventoryName) : 0;
+              $scope.suppInventoryName = $scope.supplierGridData[index];
+            }
+        });
+    }
+    $scope.getsupplierData();
+    
       $scope.suppInventoryTypeObj = {
         "Hand-work": "Hand-work",
         "Ambroidairy": "Ambroidairy",
@@ -50,7 +64,7 @@
 
       $scope.saveSuppInventory = function(){
           var dataObj = {
-              'suppInventoryName': $scope.suppInventoryName,
+              'suppInventoryName': $scope.suppInventoryName ? $scope.suppInventoryName.supplierFname : "",
               'suppInventoryItemName': $scope.suppInventoryItemName,
               'suppInventoryTotalLength': $scope.suppInventoryTotalLength,
               'suppInventoryItemPrMeter': $scope.suppInventoryItemPrMeter,
@@ -116,7 +130,7 @@
 
       $scope.updateSuppInventory = function(){
          var dataObj = {
-              'suppInventoryName': $scope.suppInventoryName,
+              'suppInventoryName':  $scope.suppInventoryName ? $scope.suppInventoryName.supplierFname : "",
               'suppInventoryItemName': $scope.suppInventoryItemName,
               'suppInventoryTotalLength': $scope.suppInventoryTotalLength,
               'suppInventoryItemPrMeter': $scope.suppInventoryItemPrMeter,

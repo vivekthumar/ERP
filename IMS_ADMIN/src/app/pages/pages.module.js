@@ -99,7 +99,7 @@
     /** @ngInject */
     function runBlock($rootScope, $timeout, $state, serv) {
         // Activate loading indicator
-        $rootScope.$isAuth = true;//by vivek
+        $rootScope.$isAuth = false;//by vivek
         var authenticatedEvent = $rootScope.$on('Authenticated', function (event, status, withAlert) {
             if (status) {
                 if (withAlert) {
