@@ -10,7 +10,14 @@
 
   /** @ngInject */
   function suppInventoryCtrl($scope, $filter, editableOptions, editableThemes,  $uibModal, baProgressModal, $http, serv) {
-    
+    $scope.suppInventoryName,
+  $scope.suppInventoryItemName,
+  $scope.suppInventoryTotalLength,
+  $scope.suppInventoryItemPrMeter,
+  $scope.suppInventoryApproxMeter,
+  $scope.suppInventoryChallan,
+  $scope.suppInventoryPendingItem,
+  $scope.suppInventoryRemarks;
     var modalFlag = false;
     $scope.open = function (page, size) {
       modalFlag = true;
@@ -37,17 +44,20 @@
         "Ambroidairy": "Ambroidairy",
         "Silai": "Silai"
       }
+      $scope.$watch('suppInventoryItemPrMeter',function(n,o){
+        $scope.suppInventoryApproxMeter = $scope.suppInventoryTotalLength/$scope.suppInventoryItemPrMeter
+      },true);
 
       $scope.saveSuppInventory = function(){
           var dataObj = {
-              'suppInventoryFname': $scope.suppInventoryFname,
-              'suppInventoryAddress': $scope.suppInventoryAddress,
-              'suppInventoryCity': $scope.suppInventoryCity,
-              'suppInventoryState': $scope.suppInventoryState,
-              'suppInventoryCountry': $scope.suppInventoryCountry,
-              'suppInventoryMobile': $scope.suppInventoryMobile,
-              'suppInventoryEmail': $scope.suppInventoryEmail,
-              'suppInventoryType': $scope.suppInventoryType
+              'suppInventoryName': $scope.suppInventoryName,
+              'suppInventoryItemName': $scope.suppInventoryItemName,
+              'suppInventoryTotalLength': $scope.suppInventoryTotalLength,
+              'suppInventoryItemPrMeter': $scope.suppInventoryItemPrMeter,
+              'suppInventoryApproxMeter': $scope.suppInventoryApproxMeter,
+              'suppInventoryChallan': $scope.suppInventoryChallan,
+              'suppInventoryPendingItem': $scope.suppInventoryPendingItem,
+              'suppInventoryRemarks': $scope.suppInventoryRemarks
           }
           console.log("dataObj  :: ", dataObj)
 
@@ -72,21 +82,21 @@
           });
       }
 
-      $scope.editSuppInventory = function(page, size, suppInventoryID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType){
+      $scope.editSuppInventory = function(page, size, suppInventoryID,tdFname,tdItemName,tdItemLength,tdItemprmeter,tdApproxMeter,tdChallan,tdPendingItem,tdRemarks){
         
         modalFlag = true;
 
-        $scope.suppInventoryFname = tdFname
-        $scope.suppInventoryAddress = tdAdd
-        $scope.suppInventoryCity = tdCity
-        $scope.suppInventoryState = tdState
-        $scope.suppInventoryCountry = tdCountry
-        $scope.suppInventoryMobile = tdMobile
-        $scope.suppInventoryEmail = tdEmail
-        $scope.suppInventoryType = tdType
+        $scope.suppInventoryName = tdFname
+        $scope.suppInventoryItemName = tdItemName
+        $scope.suppInventoryTotalLength = tdItemLength
+        $scope.suppInventoryItemPrMeter = tdItemprmeter
+        $scope.suppInventoryApproxMeter = tdApproxMeter
+        $scope.suppInventoryChallan = tdChallan
+        $scope.suppInventoryPendingItem = tdPendingItem
+        $scope.suppInventoryRemarks = tdRemarks
         $scope.suppInventoryID = suppInventoryID
 
-        console.log("EDIT     : ", suppInventoryID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType)
+        console.log("EDIT     : ", tdFname,tdItemName,tdItemLength,tdApproxMeter,tdChallan,tdPendingItem,tdRemarks,suppInventoryID)
 
         $scope.modalInstance = $uibModal.open({
           animation: true,
@@ -106,14 +116,14 @@
 
       $scope.updateSuppInventory = function(){
          var dataObj = {
-              'suppInventoryFname': $scope.suppInventoryFname,
-              'suppInventoryAddress': $scope.suppInventoryAddress,
-              'suppInventoryCity': $scope.suppInventoryCity,
-              'suppInventoryState': $scope.suppInventoryState,
-              'suppInventoryCountry': $scope.suppInventoryCountry,
-              'suppInventoryMobile': $scope.suppInventoryMobile,
-              'suppInventoryEmail': $scope.suppInventoryEmail,
-              'suppInventoryType': $scope.suppInventoryType
+              'suppInventoryName': $scope.suppInventoryName,
+              'suppInventoryItemName': $scope.suppInventoryItemName,
+              'suppInventoryTotalLength': $scope.suppInventoryTotalLength,
+              'suppInventoryItemPrMeter': $scope.suppInventoryItemPrMeter,
+              'suppInventoryApproxMeter': $scope.suppInventoryApproxMeter,
+              'suppInventoryChallan': $scope.suppInventoryChallan,
+              'suppInventoryPendingItem': $scope.suppInventoryPendingItem,
+              'suppInventoryRemarks': $scope.suppInventoryRemarks
           }
 
           console.log("dataObj  :: ", dataObj, $scope.suppInventoryID)

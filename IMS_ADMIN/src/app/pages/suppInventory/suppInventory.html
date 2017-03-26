@@ -21,46 +21,28 @@
   <table class="table table-bordered" st-table="suppInventoryData">
     <thead>
     <tr class="sortable ">
-      <th st-sort="suppInventoryFname">Full Name</th>
-      <th st-sort="suppInventoryAddress">Address</th>
-      <th st-sort="suppInventoryCity">City</th>
-      <th st-sort="suppInventoryState">State</th>
-      <th st-sort="suppInventoryCountry">County</th>
-      <th st-sort="suppInventoryMobile">Mobile</th>
-      <th st-sort="suppInventoryEmail">Email</th>
-      <th st-sort="suppInventoryType">type</th>
+      <th st-sort="suppInventoryName">Name</th>
+      <th st-sort="suppInventoryItemName">Item.No.</th>
+      <th st-sort="suppInventoryTotalLength">Length</th>
+      <th st-sort="suppInventoryItemPrMeter">Item/Metr</th>
+      <th st-sort="suppInventoryApproxMeter">Quantity</th>
+      <th st-sort="suppInventoryChallan">Challan No.</th>
+      <th st-sort="suppInventoryPendingItem">Pending Item</th>
+      <th st-sort="suppInventoryRemarks">Remark</th>
       <th>Action</th>
     </tr>
-    <!-- <tr>
-      <th><input st-search="suppInventoryFname" placeholder="Search name" class="input-sm form-control search-input"
-                 type="search"/></th>
-      <th><input st-search="suppInventoryAddress" placeholder="Search address" class="input-sm form-control search-input"
-                 type="search"/></th>
-      <th><input st-search="suppInventoryCity" placeholder="Search city" class="input-sm form-control search-input"
-                 type="search"/></th>
-      <th><input st-search="suppInventoryState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
-      </th>
-      <th><input st-search="suppInventoryCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
-      </th>
-      <th><input st-search="suppInventoryMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
-      </th>
-      <th><input st-search="suppInventoryEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
-      </th>
-      <th><input st-search="suppInventoryType" placeholder="Search type" class="input-sm form-control search-input" type="search"/>
-      </th>
-    </tr> -->
     </thead>
     <tbody>
     <tr ng-repeat="val in suppInventoryGridData">
-      <td>{{val.suppInventoryFname}}</td>
-      <td>{{val.suppInventoryAddress}}</td>
-      <td>{{val.suppInventoryCity}}</td>
-      <td>{{val.suppInventoryState}}</td>
-      <td>{{val.suppInventoryCountry}}</td>
-      <td>{{val.suppInventoryMobile}}</td>
-      <td>{{val.suppInventoryEmail}}</td>
-      <td>{{val.suppInventoryType}}</td>
-      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editSuppInventory('app/pages/suppInventory/widgets/editModal.html', 'md', val._id,val.suppInventoryFname,val.suppInventoryAddress,val.suppInventoryCity,val.suppInventoryState,val.suppInventoryCountry,val.suppInventoryMobile,val.suppInventoryEmail,val.suppInventoryType)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteSuppInventory(val._id)" style="cursor: pointer;">Delete</span></td>
+      <td>{{val.suppInventoryName}}</td>
+      <td>{{val.suppInventoryItemName}}</td>
+      <td>{{val.suppInventoryTotalLength}}</td>
+      <td>{{val.suppInventoryItemPrMeter}}</td>
+      <td>{{val.suppInventoryApproxMeter}}</td>
+      <td>{{val.suppInventoryChallan}}</td>
+      <td>{{val.suppInventoryPendingItem}}</td>
+      <td>{{val.suppInventoryRemarks}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editSuppInventory('app/pages/suppInventory/widgets/editModal.html', 'md', val._id,val.suppInventoryName,val.suppInventoryItemName,val.suppInventoryTotalLength,val.suppInventoryItemPrMeter,val.suppInventoryApproxMeter,val.suppInventoryChallan,val.suppInventoryPendingItem,val.suppInventoryRemarks)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteSuppInventory(val._id)" style="cursor: pointer;">Delete</span></td>
     </tr>
     </tbody>
     <tfoot>

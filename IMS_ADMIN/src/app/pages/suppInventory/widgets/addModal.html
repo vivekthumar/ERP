@@ -6,60 +6,61 @@
     <h4 class="modal-title" id="myModalLabel">Add Modal</h4>
   </div>
   <form class="form form-horizontal">
-  <div class="modal-body">
-      
-        <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory Full Name:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="suppInventoryFname" placeholder="SuppInventory Full Name">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory Address:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="suppInventoryAddress" placeholder="SuppInventory Address">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory City:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="suppInventoryCity" placeholder="SuppInventory City">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory State:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="suppInventoryState" placeholder="SuppInventory State">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory Country:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="suppInventoryCountry" placeholder="SuppInventory Country">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory Mobile:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="suppInventoryMobile" placeholder="SuppInventory Mobile">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory Email:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="suppInventoryEmail" placeholder="SuppInventory Email">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">SuppInventory Type:</label>
-            <div class="col-sm-7">
-              <select class="form-control selectpicker show-tick" title="Select SuppInventoryType" selectpicker
-                 ng-model="suppInventoryType" ng-options="key for (key, val) in suppInventoryTypeObj">
-              </select>
-            </div>
-          </div>   
-      
-          
+  <div class="modal-body"> 
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Select supplier:</label>
+      <div class="col-sm-7">
+        <select class="form-control" title="Select supplier" data-style="btn-success" data-container="body"
+                  selectpicker ng-model="suppInventoryName">
+              <option value='Option 1'>Option 1</option>
+              <option value='Option 2'>Option 2</option>
+              <option value='Option 3'>Option 3</option>
+              <option value='Option 4'>Option 4</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Item Name/No.:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="suppInventoryItemName" placeholder="Item Name/No.">
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Total length:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="suppInventoryTotalLength" placeholder="Total length">
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Item/meter:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="suppInventoryItemPrMeter" placeholder="Item/meter">
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Approx items:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="suppInventoryApproxMeter" placeholder="Approx items" disabled>
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Challan No.:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="suppInventoryChallan" placeholder="Challan No.">
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Pending item:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="suppInventoryPendingItem" placeholder="Pending item">
+      </div>
+    </div>
+    <div class="form-group has-success">
+      <label class="col-sm-3 control-label">Remarks:</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" ng-model="suppInventoryRemarks" placeholder="Remarks">
+      </div>
+    </div>   
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
