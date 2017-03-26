@@ -39,7 +39,12 @@
           <div class="form-group has-success">
             <label class="col-sm-3 control-label">design Image:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="designImg" placeholder="design Image">
+              <input id="upload-input" type="file" onchange="angular.element(this).scope().setFile(this)" name="uploads[]" multiple="multiple">
+              <!-- <input type="file" class="form-control" ng-model="designImg"> -->
+               <!-- <input id="upload-input" ng-change="myFunc()" ng-model="designImg" type="file" name="uploads[]" multiple="multiple"></br> -->
+               <!-- <input type="file" 
+           onchange="angular.element(this).scope().setFile(this)">
+    {{theFile.name}} -->
             </div>
           </div>
           <div class="form-group has-success">

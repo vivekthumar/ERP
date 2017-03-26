@@ -31,16 +31,170 @@
 
     $scope.baseURL = "http://localhost:4000/"
 
+
+    //  $scope.myFunc = function() {
+    //     var files = $(this).get(0).files;
+    //     console.log("files  >> ", files)
+    //     if (files.length > 0){
+    //       // create a FormData object which will be sent as the data payload in the
+    //       // AJAX request
+    //       var formData = new FormData();
+
+    //       // loop through all the selected files and add them to the formData object
+    //       for (var i = 0; i < files.length; i++) {
+    //         var file = files[i];
+
+    //         // add the files to formData object for the data payload
+    //         formData.append('uploads[]', file, file.name);
+    //       }
+    //       console,log("formData  >> ", formData)
+    //     }
+    // };
+
+
+
+      // $('#upload-input').on('change', function(){
+
+      //   var files = $(this).get(0).files;
+      //   console.log("files  >> ", files)
+      //   if (files.length > 0){
+      //     // create a FormData object which will be sent as the data payload in the
+      //     // AJAX request
+      //     var formData = new FormData();
+
+      //     // loop through all the selected files and add them to the formData object
+      //     for (var i = 0; i < files.length; i++) {
+      //       var file = files[i];
+
+      //       // add the files to formData object for the data payload
+      //       formData.append('uploads[]', file, file.name);
+      //     }
+      //     console,log("formData  >> ", formData)
+      //     // $.ajax({
+      //     //   url: '/upload',
+      //     //   type: 'POST',
+      //     //   data: formData,
+      //     //   processData: false,
+      //     //   contentType: false,
+      //     //   success: function(data){
+      //     //       console.log('upload successful!\n' + data);
+      //     //   },
+      //     //   xhr: function() {
+      //     //     // create an XMLHttpRequest
+      //     //     var xhr = new XMLHttpRequest();
+
+      //     //     // listen to the 'progress' event
+      //     //     xhr.upload.addEventListener('progress', function(evt) {
+
+      //     //       if (evt.lengthComputable) {
+      //     //         // calculate the percentage of upload completed
+      //     //         var percentComplete = evt.loaded / evt.total;
+      //     //         percentComplete = parseInt(percentComplete * 100);
+
+      //     //         // update the Bootstrap progress bar with the new percentage
+      //     //         $('.progress-bar').text(percentComplete + '%');
+      //     //         $('.progress-bar').width(percentComplete + '%');
+
+      //     //         // once the upload reaches 100%, set the progress bar text to done
+      //     //         if (percentComplete === 100) {
+      //     //           $('.progress-bar').html('Done');
+      //     //         }
+
+      //     //       }
+
+      //     //     }, false);
+
+      //     //     return xhr;
+      //     //   }
+      //     // });
+
+      //   }
+      // });
+
+
+// $scope.setFile = function(element) {
+//         $scope.$apply(function($scope) {
+//             $scope.theFile = element.files[0];
+
+//             // $scope.$apply(function (scope) {  
+//                 $scope.AttachStatus = "";  
+//                 $scope.files = []  
+//                 for (var i = 0; i < element.files.length; i++) {  
+//                     $scope.files.push(element.files[i])  
+//                 }  
+
+//                 var fd = new FormData() 
+//                  for (var i in $scope.files) {  
+//                     fd.append("uploadedFile", $scope.files[i])  
+//                 }  
+//                 // $scope.progressVisible = false  
+//             // });  
+
+
+//              console.log("$scope.theFile  :: ", $scope.theFile, $scope.files, fd)
+//         });
+//     };
+
+$scope.setFile = function(element) {
+
+    $scope.$apply(function($scope) {
+        $scope.theFile = element.files[0];
+
+
+        var formData = new FormData();
+
+      // loop through all the selected files and add them to the formData object
+      for (var i = 0; i < element.files.length; i++) {
+        var file = element.files[i];
+
+        // add the files to formData object for the data payload
+        formData.append('uploads[]', file, file.name);
+      }
+
+
+        // $scope.$apply(function (scope) {  
+            // $scope.AttachStatus = "";  
+            // $scope.files = []  
+            // for (var i = 0; i < element.files.length; i++) {  
+            //     $scope.files.push(element.files[i])  
+            // }  
+
+            // var fd = new FormData() 
+            //  for (var i in $scope.files) {  
+            //     fd.append("uploadedFile", $scope.files[i])  
+            // }  
+            // $scope.progressVisible = false  
+        // });  
+
+     $.ajax({
+        url: $scope.baseURL+'design/upload',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data){
+             serv.toast.showSuccessToast('Image has been updated successfully..!');
+        }
+      });    
+
+         console.log("$scope.theFile  :: ",formData, $scope.theFile)
+    });
+  }
+
+
+
+     
       $scope.savedesign = function(){
           var dataObj = {
               'designNo': $scope.designNo,
               'designPrice': $scope.designPrice,
               'designType': $scope.designType,
               'designName': $scope.designName,
-              'designImg': $scope.designImg,
+              'designImg': "assets/uploads/"+ $scope.theFile.name,
               'designRmrk': $scope.designRmrk,
               'user':$rootScope.userData.email
           }
+           // $scope.filename = $scope.file.name;
           console.log("dataObj  :: ", dataObj)
 
           $http({
@@ -93,7 +247,7 @@
               'designPrice': $scope.designPrice,
               'designType': $scope.designType,
               'designName': $scope.designName,
-              'designImg': $scope.designImg,
+              'designImg':  "assets/uploads/"+ $scope.theFile.name,
               'designRmrk': $scope.designRmrk,
               'user':$rootScope.userData.email
           }

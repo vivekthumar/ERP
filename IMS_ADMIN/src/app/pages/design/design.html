@@ -54,7 +54,7 @@
       <td>{{val.designPrice}}</td>
       <td>{{val.designType}}</td>
       <td>{{val.designName}}</td>
-      <td>{{val.designImg}}</td>
+      <td><img  ng-src="{{val.designImg}}" src="{{val.designImg}}" style="width:125px;"></img>  </td>
       <td>{{val.designRmrk}}</td>
       <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editdesign('app/pages/design/widgets/editModal.html', 'md', val._id,val.designNo,val.designPrice,val.designType,val.designName,val.designImg,val.designRmrk)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deletedesign(val._id)" style="cursor: pointer;">Delete</span></td>
     </tr>

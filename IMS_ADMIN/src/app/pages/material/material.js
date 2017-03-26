@@ -40,14 +40,12 @@
 
       $scope.saveMaterial = function(){
           var dataObj = {
-              'materialFname': $scope.materialFname,
-              'materialAddress': $scope.materialAddress,
-              'materialCity': $scope.materialCity,
-              'materialState': $scope.materialState,
-              'materialCountry': $scope.materialCountry,
-              'materialMobile': $scope.materialMobile,
-              'materialEmail': $scope.materialEmail,
-              'materialType': $scope.materialType
+              'materialName': $scope.materialName,
+              'materialItem': $scope.materialItem,
+              'materialPrice': $scope.materialPrice,
+              'materialCost': $scope.materialPrice * $scope.materialItem,
+              'materialPending': $scope.materialPending,
+              'materialRemarks': $scope.materialRemarks
           }
           console.log("dataObj  :: ", dataObj)
 
@@ -64,29 +62,23 @@
               }else{
                 serv.toast.showErrorToast('Material has not been saved..!');
               }
-              
-
-
-              
-              
           });
       }
 
-      $scope.editMaterial = function(page, size, materialID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType){
+      $scope.editMaterial = function(page, size, materialID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile){
         
         modalFlag = true;
+console.log("tdCountry  :: ", tdCountry)
 
-        $scope.materialFname = tdFname
-        $scope.materialAddress = tdAdd
-        $scope.materialCity = tdCity
-        $scope.materialState = tdState
-        $scope.materialCountry = tdCountry
-        $scope.materialMobile = tdMobile
-        $scope.materialEmail = tdEmail
-        $scope.materialType = tdType
-        $scope.materialID = materialID
+$scope.tags = "kkkkjhkjhkjhkj"
 
-        console.log("EDIT     : ", materialID,tdFname,tdAdd,tdCity,tdState,tdCountry,tdMobile,tdEmail,tdType)
+
+        $scope.materialName = tdFname
+        $scope.materialItem = tdAdd
+        $scope.materialPrice = tdCity
+        $scope.materialCost = tdState
+        $scope.materialPending = tdCountry
+        $scope.materialRemarks = tdMobile
 
         $scope.modalInstance = $uibModal.open({
           animation: true,
@@ -106,14 +98,12 @@
 
       $scope.updateMaterial = function(){
          var dataObj = {
-              'materialFname': $scope.materialFname,
-              'materialAddress': $scope.materialAddress,
-              'materialCity': $scope.materialCity,
-              'materialState': $scope.materialState,
-              'materialCountry': $scope.materialCountry,
-              'materialMobile': $scope.materialMobile,
-              'materialEmail': $scope.materialEmail,
-              'materialType': $scope.materialType
+              'materialName': $scope.materialName,
+              'materialItem': $scope.materialItem,
+              'materialPrice': $scope.materialPrice,
+              'materialCost': $scope.materialPrice * $scope.materialItem,
+              'materialPending': $scope.materialPending,
+              'materialRemarks': $scope.materialRemarks
           }
 
           console.log("dataObj  :: ", dataObj, $scope.materialID)

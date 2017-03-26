@@ -10,55 +10,41 @@
       
        <input type="hidden" ng-model="materialID">
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material Full Name:</label>
+            <label class="col-sm-3 control-label">Material Name:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="materialFname" placeholder="Material Full Name">
+              <input type="text" class="form-control" ng-model="materialName" placeholder="Material Name">
             </div>
           </div>
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material Address:</label>
+            <label class="col-sm-3 control-label">No of item:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="materialAddress" placeholder="Material Address">
+              <input type="number" class="form-control" ng-model="materialItem" placeholder="No of item">
             </div>
           </div>
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material City:</label>
+            <label class="col-sm-3 control-label">Price per item:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="materialCity" placeholder="Material City">
+              <input type="number" class="form-control" ng-model="materialPrice" placeholder="Price per item">
             </div>
           </div>
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material State:</label>
+            <label class="col-sm-3 control-label">Total cost:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="materialState" placeholder="Material State">
+              <span class="form-control" ng-model="materialCost">{{materialItem * materialPrice}}</span>
             </div>
           </div>
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material Country:</label>
+            <label class="col-sm-3 control-label">Pending item:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="materialCountry" placeholder="Material Country">
+              <input type="text" class="form-control" ng-model="materialPending" placeholder="Add pending item">
             </div>
           </div>
           <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material Mobile:</label>
+            <label class="col-sm-3 control-label">Remarks:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="materialMobile" placeholder="Material Mobile">
+              <input type="text" class="form-control" ng-model="materialRemarks" placeholder="Remarks">
             </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material Email:</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" ng-model="materialEmail" placeholder="Material Email">
-            </div>
-          </div>
-          <div class="form-group has-success">
-            <label class="col-sm-3 control-label">Material Type:</label>
-            <div class="col-sm-7">
-              <select class="form-control selectpicker show-tick" title="Select MaterialType" selectpicker
-                                    ng-model="materialType" ng-options="key for (key, val) in materialTypeObj">
-                            </select>
-            </div>
-          </div>
+          </div>    
       
           
   </div>

@@ -21,28 +21,26 @@
   <table class="table table-bordered" st-table="materialData">
     <thead>
     <tr class="sortable ">
-      <th st-sort="materialFname">Full Name</th>
-      <th st-sort="materialAddress">Address</th>
-      <th st-sort="materialCity">City</th>
-      <th st-sort="materialState">State</th>
-      <th st-sort="materialCountry">County</th>
-      <th st-sort="materialMobile">Mobile</th>
-      <th st-sort="materialEmail">Email</th>
-      <th st-sort="materialType">type</th>
+      <th st-sort="materialName">Material Name</th>
+      <th st-sort="materialItem">Material Item</th>
+      <th st-sort="materialPrice">Price Per Item</th>
+      <th st-sort="materialCost">Total Cost</th>
+      <th st-sort="materialPending">Pending List</th>
+      <th st-sort="materialRemarks">Remarks</th>
       <th>Action</th>
     </tr>
     <!-- <tr>
-      <th><input st-search="materialFname" placeholder="Search name" class="input-sm form-control search-input"
+      <th><input st-search="materialName" placeholder="Search name" class="input-sm form-control search-input"
                  type="search"/></th>
-      <th><input st-search="materialAddress" placeholder="Search address" class="input-sm form-control search-input"
+      <th><input st-search="materialItem" placeholder="Search address" class="input-sm form-control search-input"
                  type="search"/></th>
-      <th><input st-search="materialCity" placeholder="Search city" class="input-sm form-control search-input"
+      <th><input st-search="materialPrice" placeholder="Search city" class="input-sm form-control search-input"
                  type="search"/></th>
-      <th><input st-search="materialState" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
+      <th><input st-search="materialCost" placeholder="Search state" class="input-sm form-control search-input" type="search"/>
       </th>
-      <th><input st-search="materialCountry" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
+      <th><input st-search="materialPending" placeholder="Search country" class="input-sm form-control search-input" type="search"/>
       </th>
-      <th><input st-search="materialMobile" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
+      <th><input st-search="materialRemarks" placeholder="Search mobile" class="input-sm form-control search-input" type="search"/>
       </th>
       <th><input st-search="materialEmail" placeholder="Search email" class="input-sm form-control search-input" type="search"/>
       </th>
@@ -52,15 +50,13 @@
     </thead>
     <tbody>
     <tr ng-repeat="val in materialGridData">
-      <td>{{val.materialFname}}</td>
-      <td>{{val.materialAddress}}</td>
-      <td>{{val.materialCity}}</td>
-      <td>{{val.materialState}}</td>
-      <td>{{val.materialCountry}}</td>
-      <td>{{val.materialMobile}}</td>
-      <td>{{val.materialEmail}}</td>
-      <td>{{val.materialType}}</td>
-      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editMaterial('app/pages/material/widgets/editModal.html', 'md', val._id,val.materialFname,val.materialAddress,val.materialCity,val.materialState,val.materialCountry,val.materialMobile,val.materialEmail,val.materialType)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteMaterial(val._id)" style="cursor: pointer;">Delete</span></td>
+      <td>{{val.materialName}}</td>
+      <td>{{val.materialItem}}</td>
+      <td>{{val.materialPrice}}</td>
+      <td>{{val.materialCost}}</td>
+      <td>{{val.materialPending}}</td>
+      <td>{{val.materialRemarks}}</td>
+      <td><span class="btn-sm bg-warning" data-toggle="modal" ng-click="editMaterial('app/pages/material/widgets/editModal.html', 'md', val._id,val.materialName,val.materialItem,val.materialPrice,val.materialCost,val.materialPending,val.materialRemarks)" style="margin-bottom:1px; cursor: pointer;">Edit</span></br><span class="btn-sm bg-danger" ng-click="deleteMaterial(val._id)" style="cursor: pointer;">Delete</span></td>
     </tr>
     </tbody>
     <tfoot>
